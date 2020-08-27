@@ -18,7 +18,7 @@ swagger:
   enabled: true
 spring:
   datasource:
-    url: jdbc:mysql://liyang:3306/cnr-clouduser?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://112.124.13.227:3306/cnr-clouduser?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: a
     driver-class-name: com.mysql.jdbc.Driver
