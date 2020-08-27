@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ai.cnr.apollo.service.atom.dao.mapper.interfaces.UserMapper">
-  <resultMap id="BaseResultMap" type="com.ai.cnr.apollo.service.atom.dao.mapper.bo.User">
+<mapper namespace="com.example.demo.dao.Interface.UserMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.dao.bo.User">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List">
     id, username, password, url, email
   </sql>
-  <select id="selectByExample" parameterType="com.ai.cnr.apollo.service.atom.dao.mapper.bo.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.demo.dao.bo.UserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -94,19 +94,19 @@
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.ai.cnr.apollo.service.atom.dao.mapper.bo.UserExample">
+  <delete id="deleteByExample" parameterType="com.example.demo.dao.bo.UserExample">
     delete from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.ai.cnr.apollo.service.atom.dao.mapper.bo.User">
+  <insert id="insert" parameterType="com.example.demo.dao.bo.User">
     insert into user (id, username, password, 
       url, email)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{url,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.ai.cnr.apollo.service.atom.dao.mapper.bo.User">
+  <insert id="insertSelective" parameterType="com.example.demo.dao.bo.User">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -143,7 +143,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.ai.cnr.apollo.service.atom.dao.mapper.bo.UserExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.example.demo.dao.bo.UserExample" resultType="java.lang.Long">
     select count(*) from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -183,7 +183,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ai.cnr.apollo.service.atom.dao.mapper.bo.User">
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.dao.bo.User">
     update user
     <set>
       <if test="username != null">
@@ -201,7 +201,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ai.cnr.apollo.service.atom.dao.mapper.bo.User">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.dao.bo.User">
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
