@@ -1,0 +1,38 @@
+server:
+  port: 8888
+  servlet:
+    session.timeout: 60000
+    context-path: /yc74ibike
+    application-display-name: yc74ibike
+  undertow:
+    io-threads: 16
+    worker-threads: 256
+    buffer-size: 1024
+    buffers-per-region: 1024
+    direct-buffers: true
+logging:
+  level:
+    com:
+      example: debug
+swagger:
+  enabled: true
+spring:
+  datasource:
+    url: jdbc:mysql://liyang:3306/cnr-clouduser?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: a
+    driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: user-service # 应用名称
+  main:
+    allow-bean-definition-overriding: true #当也到相同名字的时候 是否允许覆盖
+eureka:
+  client:
+    service-url: # EurekaServer地址
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true # 当调用getHostname获取实例的hostname时，返回ip而不是host名称
+    ip-address: 127.0.0.1 # 指定自己的ip信息，不指定的话会自己寻找
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.example.demo.dao
