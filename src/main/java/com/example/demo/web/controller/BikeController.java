@@ -1,5 +1,6 @@
 package com.example.demo.web.controller;
 
+import com.example.demo.dao.bo.User;
 import com.example.demo.server.Interface.IUserBusisv;
 import com.example.demo.web.model.JsonModel;
 import com.example.demo.web.userRequest.UserloginRequest;
