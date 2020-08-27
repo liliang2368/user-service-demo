@@ -9,6 +9,8 @@ public class User {
 
     private String url;
 
+    private String email;
+
     public Integer getId() {
         return id;
     }
@@ -41,13 +43,11 @@ public class User {
         this.url = url;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", url='" + url + '\'' +
-                '}';
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

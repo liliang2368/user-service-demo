@@ -1,12 +1,11 @@
 package com.example.demo.dao.Interface;
 
+import java.util.List;
 
 import com.example.demo.dao.bo.User;
 import com.example.demo.dao.bo.UserExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
 public interface UserMapper {
     long countByExample(UserExample example);
 
