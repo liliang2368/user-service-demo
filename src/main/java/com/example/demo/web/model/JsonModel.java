@@ -12,6 +12,7 @@ public class JsonModel implements Serializable {
 	private Object obj;
 	private String url;
 
+
 	public Integer getCode() {
 		return code;
 	}
@@ -47,6 +48,21 @@ public class JsonModel implements Serializable {
 	@Override
 	public String toString() {
 		return "JsonModel [code=" + code + ", msg=" + msg + ", obj=" + obj + ", url=" + url + "]";
+	}
+
+	public static JsonModel success(Object object)
+	{
+		JsonModel jsonmodel=new JsonModel();
+		jsonmodel.setObj(object);
+		jsonmodel.setCode(200);
+		return jsonmodel;
+	}
+	public static JsonModel fail(Object object)
+	{
+		JsonModel jsonModel=new JsonModel();
+		jsonModel.setObj(object);
+		jsonModel.setCode(500);
+		return jsonModel;
 	}
 
 }
