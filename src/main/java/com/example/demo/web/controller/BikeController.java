@@ -43,11 +43,12 @@ public class BikeController {
 		logger.info("接口入参数"+userloginRequest);
 		JsonModel jsonModel=new JsonModel();
 		List<User> result=iUserBusisv.loginUser(userloginRequest);
-		jsonModel.setObj(result);
-		jsonModel.setCode(200);
 
-		return jsonModel;
+		return jsonModel.success(result);
+
+
 	}
+
 
 	
 	

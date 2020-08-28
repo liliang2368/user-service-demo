@@ -25,11 +25,16 @@ public class UserBusisvImpl  implements IUserBusisv {
 
     @Override
     public List<User> loginUser(UserloginRequest userloginRequest) {
-        UserExample userExample = new UserExample();
-        UserExample.Criteria criteria = userExample.createCriteria();
-        criteria.andUsernameEqualTo(userloginRequest.getUserName());
-        criteria.andPasswordEqualTo(userloginRequest.getPassWord());
-        List<User> list=userMapper.selectByExample(userExample);
+//        UserExample userExample = new UserExample();
+//        UserExample.Criteria criteria = userExample.createCriteria();
+//        criteria.andUsernameEqualTo(userloginRequest.getUserName());
+//        criteria.andPasswordEqualTo(userloginRequest.getPassWord());
+//        List<User> list=userMapper.selectByExample(userExample);
+        UserExample userExample=new UserExample();
+         UserExample.Criteria criteria= userExample.createCriteria();
+         criteria.andUsernameEqualTo(userloginRequest.getUserName());
+         criteria.andPasswordEqualTo(userloginRequest.getPassWord());
+        List<User> list= userMapper.selectByExample(userExample);
         return list;
     }
 }
