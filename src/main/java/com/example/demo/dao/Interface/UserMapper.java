@@ -1,9 +1,8 @@
 package com.example.demo.dao.Interface;
 
-import java.util.List;
-
 import com.example.demo.dao.bo.User;
 import com.example.demo.dao.bo.UserExample;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {

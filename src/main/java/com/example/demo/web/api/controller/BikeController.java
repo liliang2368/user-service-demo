@@ -2,6 +2,8 @@ package com.example.demo.web.api.controller;
 
 import com.example.demo.dao.bo.User;
 import com.example.demo.server.Interface.IUserBusisv;
+import com.example.demo.server.Interface.ProductBusisv;
+import com.example.demo.vo.PageObject;
 import com.example.demo.web.api.vo.UserRequest;
 import com.example.demo.web.model.JsonModel;
 import com.example.demo.web.userRequest.UserloginRequest;
@@ -26,6 +28,10 @@ public class BikeController {
 	private Logger logger = LogManager.getLogger(BikeController.class);
 	@Autowired
 	private IUserBusisv iUserBusisv;
+	@Autowired
+	private ProductBusisv productBusisv;
+
+
 
 	@ApiOperation(value = "用户注册接口", httpMethod = "POST", consumes = "application/json")
 	@ApiResponse(code = 200, message = "success", response = String.class)
@@ -57,7 +63,14 @@ public class BikeController {
 
 		return  JsonModel.success(str);
 	}
-
+	@ApiOperation(value = "商品查询调用接口", httpMethod = "POST", consumes = "application/json")
+	@ApiResponse(code = 200, message = "success", response = String.class)
+	@PostMapping(value = "/v1.0/setrecord1")
+	public JsonModel getproduct(String productname,Integer current)
+	{
+	PageObject result= productBusisv.findproduct(productname,current);
+		return JsonModel.success(result);
+	}
 
 	
 	
