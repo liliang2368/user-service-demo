@@ -1,4 +1,4 @@
-package com.example.demo.web.api.userRequest;
+package com.example.demo.web.api.request;
 
 public class UserloginRequest {
 
