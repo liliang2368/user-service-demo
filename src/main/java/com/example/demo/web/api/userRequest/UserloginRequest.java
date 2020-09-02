@@ -1,6 +1,9 @@
 package com.example.demo.web.api.userRequest;
 
 public class UserloginRequest {
+
+
+
     private String userName;
     private String passWord;
 

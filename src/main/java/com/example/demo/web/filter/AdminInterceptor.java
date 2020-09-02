@@ -1,16 +1,11 @@
 package com.example.demo.web.filter;
 
-
 import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.example.demo.dao.bo.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
-
 /**
  *
  *
@@ -29,6 +24,7 @@ public class AdminInterceptor implements  HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
 //        System.out.println("执行了TestInterceptor的preHandle方法");
         try {
+            //存redis
             //统一拦截（查询当前session是否存在user）(这里user会在每次登陆成功后，写入session)
             User user=(User)request.getSession().getAttribute("USER");
             if(user!=null){
