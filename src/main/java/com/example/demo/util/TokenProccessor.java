@@ -34,7 +34,6 @@ public class TokenProccessor {
     private static final TokenProccessor instance = new TokenProccessor();
 
 
-
     public static TokenProccessor getInstance() {
 
         return instance;

@@ -13,11 +13,6 @@ import org.apache.commons.lang3.StringUtils;
 
  * Token的工具类
 
- * @author zhous
-
- * @since 2018-2-23 14:01:41
-
- *
 
  */
 

@@ -7,15 +7,13 @@ import com.example.demo.dao.bo.UserExample;
 import com.example.demo.server.Interface.IUserBusisv;
 import com.example.demo.util.DbMailHelper;
 import com.example.demo.web.api.vo.UserRequest;
-import com.example.demo.web.userRequest.UserloginRequest;
+import com.example.demo.web.api.userRequest.UserloginRequest;
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.beanutils.BeanUtilsBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import redis.clients.jedis.Jedis;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 @Component
