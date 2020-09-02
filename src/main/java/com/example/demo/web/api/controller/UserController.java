@@ -61,7 +61,7 @@ public class UserController {
 	@PostMapping(value = "/v1.0/setrecord")
 	public JsonModel getyanzhengma(@RequestBody User user) throws Exception {
 		//把验证码发送给前端
-	 String str=	iUserBusisv.getrecods(user);
+	 String str=iUserBusisv.getrecods(user);
 
 		return  JsonModel.success(str);
 	}

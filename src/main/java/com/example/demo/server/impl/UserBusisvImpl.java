@@ -6,9 +6,12 @@ import com.example.demo.dao.bo.User;
 import com.example.demo.dao.bo.UserExample;
 import com.example.demo.server.Interface.IUserBusisv;
 import com.example.demo.util.DbMailHelper;
+import com.example.demo.web.api.controller.UserController;
 import com.example.demo.web.api.vo.UserRequest;
 import com.example.demo.web.api.request.*;
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +23,7 @@ import java.util.List;
 @Transactional
 public class UserBusisvImpl  implements IUserBusisv
 {
+    private Logger logger = LogManager.getLogger(UserBusisvImpl.class);
     @Autowired
     private UserMapper userMapper;
     @Autowired
@@ -37,7 +41,7 @@ public class UserBusisvImpl  implements IUserBusisv
         UserExample userExample=new UserExample();
         UserExample.Criteria criteria=userExample.createCriteria();
         criteria.andUsernameEqualTo(userRequest.getUsername());
-        System.out.println("sfweffwerwerwerwerrwerw"+userMapper.selectByExample(userExample));
+        logger.info("sfweffwerwerwerwerrwerw"+userMapper.selectByExample(userExample));
         if(!(userMapper.selectByExample(userExample).isEmpty()))
         {
             throw new Exception("用户名已经被占用");
@@ -75,13 +79,15 @@ public class UserBusisvImpl  implements IUserBusisv
         UserExample userExample=new UserExample();
         UserExample.Criteria criteria=userExample.createCriteria();
         criteria.andEmailEqualTo(email);
-        System.out.println("sfweffwerwerwerwerrwerw"+userMapper.selectByExample(userExample));
+        logger.info("sfweffwerwerwerwerrwerw"+userMapper.selectByExample(userExample));
         if(!(userMapper.selectByExample(userExample).isEmpty()))
         {
             throw new Exception("邮箱已经被注册");
         }
         try {
+            logger.info("开始发邮箱：验证码为"+dbc);
             dbMailHelper.sendVertifyCode(user.getEmail(), "用于邮箱注册的验证码为", dbc);
+            logger.info("邮箱验证码存redis");
             //redis验证码怎么设置过期时间
             jedis.setex(email,  300*100,dbc);
 
