@@ -3,6 +3,8 @@ package com.example.demo.dao.Interface;
 import com.example.demo.dao.bo.Produce;
 import com.example.demo.dao.bo.ProduceExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 public interface ProduceMapper {
