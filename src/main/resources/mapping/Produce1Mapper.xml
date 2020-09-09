@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.Interface.Produce1Mapper">
+<select id="FindProduct" resultType="com.example.demo.dao.bo.Produce">
+
+select product_id,sku_name,picture,price from produce
+<where>
+<if test="sku_name!=null and sku_name!=''">
+   sku_name like concat("%",#{sku_name},"%")
+</if>
+</where>
+limit #{startindex},#{pageSize}
+
+
+
+
+
+</select>
+
+
+</mapper>
