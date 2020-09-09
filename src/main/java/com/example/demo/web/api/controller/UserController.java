@@ -65,14 +65,6 @@ public class UserController {
 
 		return  JsonModel.success(str);
 	}
-	@ApiOperation(value = "商品查询调用接口", httpMethod = "POST", consumes = "application/json")
-	@ApiResponse(code = 200, message = "success", response = String.class)
-	@PostMapping(value = "/v1.0/setrecord1")
-	public JsonModel getproduct(String productname,Integer current)
-	{
-	PageObject result= productBusisv.findproduct(productname,current);
-		return JsonModel.success(result);
-	}
 
 	
 	
