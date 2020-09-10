@@ -12,10 +12,36 @@ select product_id,sku_name,picture,price from produce
 limit #{startindex},#{pageSize}
 
 
+</select>
+   <resultMap id="sysUserMenu" type="arraylist">
+      <id property="id"  column="id"></id>
+      <result property="name" column="name"></result>
+      <result property="url" column="url"></result>
+      <collection property="childs" ofType="arraylist">
+         <id property="id" column="cid"/>
+         <result property="name" column="cname"/>
+         <result property="url" column="curl"/>
+      </collection>
+   </resultMap>
+<select id="findMenusByids" resultMap="sysUserMenu">
+select p.id,p.name,p.url,c.id cid,c.name cname,c.url curl
+from sys_menus p inner join sys_menus c on c.parentId=p.id
+where p.parentId is null and c.id in
+<foreach collection="menuIds" separator="," open="(" close=")" item="menuId">
+#{menuId}
 
-
+</foreach>
 
 </select>
 
+<!--</select>-->
+<!--<insert id="findMenusByids"  >-->
+<!--   insert into sys_roles_menus-->
+<!--   (role_id,menu_id)-->
+<!--   values-->
+<!--   <foreach collection="menuId" separator="," open="(" close=")" item="menuId">-->
+<!--      (#{role_id},#{menu_id})-->
+<!--   </foreach>-->
+<!--   </insert>-->
 
 </mapper>

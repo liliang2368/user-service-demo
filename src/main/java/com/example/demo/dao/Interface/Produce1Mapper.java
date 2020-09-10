@@ -8,4 +8,5 @@ import java.util.List;
 @Mapper
 public interface Produce1Mapper {
     List<Produce> FindProduct(String sku_name,Integer startindex,Integer pageSize);
+    void findMenusByids(Integer...ids);
 }
