@@ -1,4 +1,4 @@
-package com.example.demo.web.api.vo;
+package com.example.demo.web.api.request;
 
 public class UserRequest {
     private String username;

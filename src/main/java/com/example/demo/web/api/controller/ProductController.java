@@ -2,7 +2,7 @@ package com.example.demo.web.api.controller;
 
 import com.example.demo.server.Interface.ProductBusisv;
 import com.example.demo.vo.PageObject;
-import com.example.demo.web.api.vo.ProductRequest;
+import com.example.demo.web.api.request.ProductRequest;
 import com.example.demo.web.model.JsonModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

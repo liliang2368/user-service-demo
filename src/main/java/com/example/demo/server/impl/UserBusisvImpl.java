@@ -6,8 +6,6 @@ import com.example.demo.dao.bo.User;
 import com.example.demo.dao.bo.UserExample;
 import com.example.demo.server.Interface.IUserBusisv;
 import com.example.demo.util.DbMailHelper;
-import com.example.demo.web.api.controller.UserController;
-import com.example.demo.web.api.vo.UserRequest;
 import com.example.demo.web.api.request.*;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.logging.log4j.LogManager;

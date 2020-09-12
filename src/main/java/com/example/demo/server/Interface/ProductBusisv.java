@@ -1,7 +1,7 @@
 package com.example.demo.server.Interface;
 
 import com.example.demo.vo.PageObject;
-import com.example.demo.web.api.vo.ProductRequest;
+import com.example.demo.web.api.request.ProductRequest;
 
 public interface ProductBusisv {
      //当前页码数传进来
