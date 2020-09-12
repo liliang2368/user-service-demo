@@ -2,6 +2,7 @@ package com.example.demo.web.api.controller;
 
 import com.example.demo.dao.bo.Cart;
 import com.example.demo.server.Interface.CartBusisv;
+import com.example.demo.server.Interface.IUserBusisv;
 import com.example.demo.vo.PageObject;
 import com.example.demo.web.api.request.CartRequest;
 import com.example.demo.web.api.request.ProductRequest;
@@ -20,7 +21,8 @@ import java.util.List;
 public class CartController {
   @Autowired
   private CartBusisv cartBusisv;
-
+ @Autowired
+ private IUserBusisv iUserBusisv;
 
     @ApiOperation(value = "购物车查询接口", httpMethod = "POST", consumes = "application/json")
     @ApiResponse(code = 200, message = "success", response = String.class)
