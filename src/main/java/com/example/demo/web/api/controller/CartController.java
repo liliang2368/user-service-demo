@@ -29,11 +29,22 @@ public class CartController {
     @PostMapping(value = "/v1.0/getcart")
     public JsonModel getproduct(CartRequest cartRequest)
     {
-      List<Cart> findcartbyid = cartBusisv.findcartbyid(cartRequest.getUserId());
 
+      List<Cart> findcartbyid = cartBusisv.findcartbyid(cartRequest.getUserId());
 
       return JsonModel.success(findcartbyid);
     }
+    @ApiOperation(value = "购物车新增窗口", httpMethod = "POST", consumes = "application/json")
+    @ApiResponse(code = 200, message = "success", response = String.class)
+    @PostMapping(value = "/v1.0/insertcart")
+    public JsonModel insertproduct(CartRequest cartRequest)
+    {
+
+       boolean insertcartBusisv=cartBusisv.insertcart(cartRequest);
+
+        return JsonModel.success(insertcartBusisv);
+    }
+
 
 
 
