@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.Interface.ProductdetailMapper">
   <resultMap id="BaseResultMap" type="com.example.demo.dao.bo.Productdetail">
-    <id column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="productId" jdbcType="INTEGER" property="productid" />
     <result column="pricture1" jdbcType="VARCHAR" property="pricture1" />
     <result column="picture2" jdbcType="VARCHAR" property="picture2" />
     <result column="picture3" jdbcType="VARCHAR" property="picture3" />
@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    product_id, pricture1, picture2, picture3, infos
+    productId, pricture1, picture2, picture3, infos
   </sql>
   <select id="selectByExample" parameterType="com.example.demo.dao.bo.ProductdetailExample" resultMap="BaseResultMap">
     select
@@ -76,7 +76,7 @@
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from product_detail
+    from productDetail
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,33 +84,23 @@
       order by ${orderByClause}
     </if>
   </select>
-<!--  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
-<!--    select -->
-<!--    <include refid="Base_Column_List" />-->
-<!--    from product_detail-->
-<!--    where product_id = #{productId,jdbcType=INTEGER}-->
-<!--  </select>-->
-<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
-<!--    delete from product_detail-->
-<!--    where product_id = #{productId,jdbcType=INTEGER}-->
-<!--  </delete>-->
   <delete id="deleteByExample" parameterType="com.example.demo.dao.bo.ProductdetailExample">
-    delete from product_detail
+    delete from productDetail
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.example.demo.dao.bo.Productdetail">
-    insert into product_detail (product_id, pricture1, picture2, 
+    insert into productDetail (productId, pricture1, picture2, 
       picture3, infos)
-    values (#{productId,jdbcType=INTEGER}, #{pricture1,jdbcType=VARCHAR}, #{picture2,jdbcType=VARCHAR}, 
+    values (#{productid,jdbcType=INTEGER}, #{pricture1,jdbcType=VARCHAR}, #{picture2,jdbcType=VARCHAR}, 
       #{picture3,jdbcType=VARCHAR}, #{infos,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.dao.bo.Productdetail">
-    insert into product_detail
+    insert into productDetail
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="productId != null">
-        product_id,
+      <if test="productid != null">
+        productId,
       </if>
       <if test="pricture1 != null">
         pricture1,
@@ -126,8 +116,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="productId != null">
-        #{productId,jdbcType=INTEGER},
+      <if test="productid != null">
+        #{productid,jdbcType=INTEGER},
       </if>
       <if test="pricture1 != null">
         #{pricture1,jdbcType=VARCHAR},
@@ -144,16 +134,16 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.example.demo.dao.bo.ProductdetailExample" resultType="java.lang.Long">
-    select count(*) from product_detail
+    select count(*) from productDetail
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update product_detail
+    update productDetail
     <set>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=INTEGER},
+      <if test="record.productid != null">
+        productId = #{record.productid,jdbcType=INTEGER},
       </if>
       <if test="record.pricture1 != null">
         pricture1 = #{record.pricture1,jdbcType=VARCHAR},
@@ -173,8 +163,8 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update product_detail
-    set product_id = #{record.productId,jdbcType=INTEGER},
+    update productDetail
+    set productId = #{record.productid,jdbcType=INTEGER},
       pricture1 = #{record.pricture1,jdbcType=VARCHAR},
       picture2 = #{record.picture2,jdbcType=VARCHAR},
       picture3 = #{record.picture3,jdbcType=VARCHAR},
@@ -183,30 +173,4 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-<!--  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.dao.bo.ProductDetail">-->
-<!--    update product_detail-->
-<!--    <set>-->
-<!--      <if test="pricture1 != null">-->
-<!--        pricture1 = #{pricture1,jdbcType=VARCHAR},-->
-<!--      </if>-->
-<!--      <if test="picture2 != null">-->
-<!--        picture2 = #{picture2,jdbcType=VARCHAR},-->
-<!--      </if>-->
-<!--      <if test="picture3 != null">-->
-<!--        picture3 = #{picture3,jdbcType=VARCHAR},-->
-<!--      </if>-->
-<!--      <if test="infos != null">-->
-<!--        infos = #{infos,jdbcType=VARCHAR},-->
-<!--      </if>-->
-<!--    </set>-->
-<!--    where product_id = #{productId,jdbcType=INTEGER}-->
-<!--  </update>-->
-<!--  <update id="updateByPrimaryKey" parameterType="com.example.demo.dao.bo.ProductDetail">-->
-<!--    update product_detail-->
-<!--    set pricture1 = #{pricture1,jdbcType=VARCHAR},-->
-<!--      picture2 = #{picture2,jdbcType=VARCHAR},-->
-<!--      picture3 = #{picture3,jdbcType=VARCHAR},-->
-<!--      infos = #{infos,jdbcType=VARCHAR}-->
-<!--    where product_id = #{productId,jdbcType=INTEGER}-->
-<!--  </update>-->
 </mapper>

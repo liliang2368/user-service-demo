@@ -1,7 +1,7 @@
 package com.example.demo.dao.bo;
 
 public class Productdetail {
-    private Integer productId;
+    private Integer productid;
 
     private String pricture1;
 
@@ -12,11 +12,11 @@ public class Productdetail {
     private String infos;
 
     public Integer getProductid() {
-        return productId;
+        return productid;
     }
 
     public void setProductid(Integer productid) {
-        this.productId = productid;
+        this.productid = productid;
     }
 
     public String getPricture1() {

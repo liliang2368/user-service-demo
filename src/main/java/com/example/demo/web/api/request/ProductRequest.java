@@ -1,5 +1,8 @@
 package com.example.demo.web.api.request;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class ProductRequest {
     private String productname;
     private Integer current;

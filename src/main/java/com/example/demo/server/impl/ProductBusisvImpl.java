@@ -14,8 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.sun.tools.doclint.Entity.prod;
-
 @Service
 public class ProductBusisvImpl implements ProductBusisv {
     @Autowired
