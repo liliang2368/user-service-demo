@@ -1,8 +1,8 @@
 package com.example.demo.server.impl;
 
-import com.example.demo.dao.Interface.Produce1Mapper;
 import com.example.demo.dao.Interface.ProduceMapper;
 import com.example.demo.dao.bo.Produce;
+import com.example.demo.dao.bo.ProduceExample;
 import com.example.demo.server.Interface.ProductBusisv;
 import com.example.demo.vo.PageObject;
 import com.example.demo.web.api.request.ProductRequest;
@@ -13,12 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.sun.tools.doclint.Entity.prod;
+
 @Service
 public class ProductBusisvImpl implements ProductBusisv {
     @Autowired
     private ProduceMapper produceMapper;
     @Autowired
-    private Produce1Mapper produce1Mapper;
+   // private Produce1Mapper produce1Mapper;
 
     @Override
     public PageObject findproduct(ProductRequest productRequest) {
@@ -28,7 +31,11 @@ public class ProductBusisvImpl implements ProductBusisv {
             throw new ServiceException("输入的当前页码值不能为空请重新输入");
         }
         int PageSize=5;
-        List<Produce> records=produce1Mapper.FindProduct(productRequest.getProductname(),(productRequest.getCurrent()-1)*PageSize,PageSize);
+        ProduceExample produceexample=new ProduceExample();
+        ProduceExample.Criteria criteria = produceexample.createCriteria();
+        criteria.andSkunameLike("%" + productRequest.getProductname() + "%");
+        List<Produce> records = produceMapper.selectByExample(produceexample);
+        //   List<Produce> records=produceMapper.FindProduct(productRequest.getProductname(),(productRequest.getCurrent()-1)*PageSize,PageSize);
         Page<Object> Pagehelpeer = PageHelper.startPage(productRequest.getCurrent(), PageSize);
         return new PageObject(records,(int)Pagehelpeer.getTotal(),PageSize,productRequest.getCurrent());
 //        if (productRequest.getProductname() != null) {
