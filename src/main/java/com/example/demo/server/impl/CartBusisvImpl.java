@@ -33,29 +33,39 @@ public class CartBusisvImpl implements CartBusisv {
         criteria.andUserIdEqualTo(cartRequest.getUserId());
         criteria.andProduceIdEqualTo(cartRequest.getProductId());
         List<Cart> carts = cartMapper.selectByExample(example);
-        for (Cart cart : carts) {
-            if (carts == null) {
-                //则购物车新增
-                Cart record = new Cart();
-                record.setNum(cartRequest.getNum());
-                record.setProduceId(cartRequest.getProductId());
-                record.setUserId(cartRequest.getUserId());
-                //当前时间怎么设置
-                insert = cartMapper.insert(record);
-            }
-            //有的话则购物车更新
-            CartExample examples = new CartExample();
-            CartExample.Criteria criteria1 = examples.createCriteria();
-            criteria1.andUserIdEqualTo(cartRequest.getUserId());
+        if(carts.size()==0)
+        {
+
+            //则购物车新增
             Cart record = new Cart();
-            //只需要更新数量即可 注意数量是那个数据库的数量加上新增的数量
-            record.setNum(cartRequest.getNum()+cart.getNum());
-            insert = cartMapper.updateByExample(record, examples);
+            record.setNum(cartRequest.getNum());
+            record.setProduceId(cartRequest.getProductId());
+            record.setUserId(cartRequest.getUserId());
+            //当前时间怎么设置
+            insert = cartMapper.insert(record);
+            System.out.println("购物车新增"+cartRequest.getProductId());
+        }
+        else {
+            for (Cart cart : carts) {
+
+                //有的话则购物车更新
+                {
+                    CartExample examples = new CartExample();
+                    CartExample.Criteria criteria1 = examples.createCriteria();
+                    criteria1.andUserIdEqualTo(cartRequest.getUserId());
+                    Cart record = new Cart();
+                    record.setId(cart.getId());
+                    //只需要更新数量即可 注意数量是那个数据库的数量加上新增的数量
+                    record.setNum(cartRequest.getNum() + cart.getNum());
+                    insert = cartMapper.updateByExample(record, examples);
+                    System.out.println("购物车更新" + cartRequest.getProductId());
+                }
+            }
         }
             if (insert > 0)
-                return false;
-            else
                 return true;
+            else
+                return false;
         }
 
 }

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableEurekaClient
 @SpringBootApplication
 
-@MapperScan({"com.example.demo.web.api.request","com.example.demo.dao"})
+@MapperScan("com.example.demo.dao")
 public class DemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);

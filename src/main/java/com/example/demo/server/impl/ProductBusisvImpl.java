@@ -1,8 +1,11 @@
 package com.example.demo.server.impl;
 
 import com.example.demo.dao.Interface.ProduceMapper;
+import com.example.demo.dao.Interface.ProductdetailMapper;
 import com.example.demo.dao.bo.Produce;
 import com.example.demo.dao.bo.ProduceExample;
+import com.example.demo.dao.bo.Productdetail;
+import com.example.demo.dao.bo.ProductdetailExample;
 import com.example.demo.server.Interface.ProductBusisv;
 import com.example.demo.vo.PageObject;
 import com.example.demo.web.api.request.ProductRequest;
@@ -19,6 +22,8 @@ public class ProductBusisvImpl implements ProductBusisv {
     @Autowired
     private ProduceMapper produceMapper;
     @Autowired
+    private ProductdetailMapper productdetailMapper;
+
    // private Produce1Mapper produce1Mapper;
 
     @Override
@@ -54,6 +59,16 @@ public class ProductBusisvImpl implements ProductBusisv {
         //查询当前页记录
   //   Page<Produce> pagehelpeer=PageHelper.startPage(productRequest.getCurrent(),PageSize);
   //   return new PageObject(records,(int)pagehelpeer.getTotal(),PageSize,productRequest.getCurrent());
+    }
+
+    @Override
+    public List<Productdetail> findproductbyid(ProductRequest productRequest) {
+
+        ProductdetailExample produceexample=new ProductdetailExample();
+        ProductdetailExample.Criteria criteria = produceexample.createCriteria();
+        criteria.andProductidEqualTo(productRequest.getProductId());
+        return productdetailMapper.selectByExample(produceexample);
+
     }
 
 
